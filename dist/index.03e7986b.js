@@ -621,6 +621,22 @@ jQuery.fn = jQuery.prototype = {
         });
         return this;
     },
+    delegation (eventType, selector, fn) {
+        this.each((node)=>{
+            node.addEventListener(eventType, (e)=>{
+                let el = e.target;
+                while(!el.matches(selector)){
+                    if (node === el) {
+                        el = null;
+                        break;
+                    }
+                    el = el.parentNode;
+                }
+                el && fn.call(el, e, el);
+            });
+        });
+        return this;
+    },
     off (eventName, fn) {
         this.each((node)=>{
             node.removeEventListener(eventName, fn);

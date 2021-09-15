@@ -455,6 +455,8 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}]},["c3VH3"], null, "parcelRequire94c2")
-$('.a1').find('.b3').classAdd('red').end().classAdd('green');
+$('#test').delegation('click', 'button', ()=>{
+    console.log(111);
+});
 
 //# sourceMappingURL=index.4932d4e2.js.map
